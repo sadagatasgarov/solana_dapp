@@ -1,0 +1,107 @@
+For added security, enter a BIP39 passphrase
+
+NOTE! This passphrase improves security of the recovery seed phrase NOT the
+keypair file itself, which is stored as insecure plain text
+
+BIP39 Passphrase (empty for none): 
+
+Wrote new keypair to /home/sadagat/.config/solana/id.json
+================================================================================
+pubkey: F7zz6k6yuByvAWjHEdCSV7q22fceNqiW2gtommGGX8BN
+================================================================================
+Save this seed phrase and your BIP39 passphrase to recover your new keypair:
+tongue nothing ill tenant grit wreck acoustic veteran dragon unhappy twelve dice
+
+
+
+
+
+
+
+
+
+
+
+
+sadagat@sada:~/Desktop/SOLANA/DEFI$ spl-token create-token --url devnet
+Creating token 13djdRCW2gmikgPkzUCDjytV5831Mwitc9zdB2EGBqX under program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA
+
+Address:  13djdRCW2gmikgPkzUCDjytV5831Mwitc9zdB2EGBqX
+Decimals:  9
+
+Signature: 3KqfhVPsE1oKCurRpA7KdADGcVrt8nXsZnMJ5CzjVoSyYa7q2bhsKgR9fcWpU6BuFb8ausxr4jJeUH7kvhtFZUmA
+
+
+
+
+sadagat@sada:~/Desktop/SOLANA/DEFI$ spl-token create-account 13djdRCW2gmikgPkzUCDjytV5831Mwitc9zdB2EGBqX --url devnet
+Creating account DobGKUh4k5SmJcGK7qcmtm2y1KEHrwa9ckWPJzmcZwgj
+
+Signature: 36CEMQLniGE4AYuAZX1xPJcHrjhebSnntk7SEzZHsEvjVuGzuZU3zzRh7KWva75ew8hKfxH5SdrP1MW4ihn9UkRu
+
+
+sadagat@sada:~/Desktop/SOLANA/DEFI$ spl-token balance 13djdRCW2gmikgPkzUCDjytV5831Mwitc9zdB2EGBqX
+0
+
+sadagat@sada:~/Desktop/SOLANA/DEFI$ spl-token balance 13djdRCW2gmikgPkzUCDjytV5831Mwitc9zdB2EGBqX --url devnet
+0
+
+sadagat@sada:~/Desktop/SOLANA/DEFI$ spl-token mint 13djdRCW2gmikgPkzUCDjytV5831Mwitc9zdB2EGBqX 1000 --url devnet
+Minting 1000 tokens
+  Token: 13djdRCW2gmikgPkzUCDjytV5831Mwitc9zdB2EGBqX
+  Recipient: DobGKUh4k5SmJcGK7qcmtm2y1KEHrwa9ckWPJzmcZwgj
+
+Signature: 2Kw44pcUqtKSgNsRT9qeeEWxaq15PYWmviTkPWt5zAAsDRq3Hzg3ddt9bNj5f4Fja1z1WhZ7jzN8ciwDo7fgMgb3
+
+
+
+sadagat@sada:~/Desktop/SOLANA/DEFI$ spl-token supply 13djdRCW2gmikgPkzUCDjytV5831Mwitc9zdB2EGBqX --url devnet
+1000
+
+
+
+sadagat@sada:~/Desktop/SOLANA/DEFI$ spl-token authorize 13djdRCW2gmikgPkzUCDjytV5831Mwitc9zdB2EGBqX mint --disable --url devnet
+Updating 13djdRCW2gmikgPkzUCDjytV5831Mwitc9zdB2EGBqX
+  Current mint: F7zz6k6yuByvAWjHEdCSV7q22fceNqiW2gtommGGX8BN
+  New mint: disabled
+
+Signature: FAJsCZhGYMLwz9F3ucwoqPYq1JMZVuogXE82bt4pTvBgXR5Csm99qH9FxGeuWEWgYnaGXeCUQLdBzrSTxgAFWh7
+
+sadagat@sada:~/Desktop/SOLANA/DEFI$ spl-token mint 13djdRCW2gmikgPkzUCDjytV5831Mwitc9zdB2EGBqX 1000 --url devnet
+Minting 1000 tokens
+  Token: 13djdRCW2gmikgPkzUCDjytV5831Mwitc9zdB2EGBqX
+  Recipient: DobGKUh4k5SmJcGK7qcmtm2y1KEHrwa9ckWPJzmcZwgj
+Error: Client(Error { request: Some(SendTransaction), kind: RpcError(RpcResponseError { code: -32002, message: "Transaction simulation failed: Error processing Instruction 0: custom program error: 0x5", data: SendTransactionPreflightFailure(RpcSimulateTransactionResult { err: Some(InstructionError(0, Custom(5))), logs: Some(["Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [1]", "Program log: Instruction: MintToChecked", "Program log: Error: the total supply of this token is fixed", "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 4147 of 4147 compute units", "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA failed: custom program error: 0x5"]), accounts: None, units_consumed: Some(4147), return_data: None, inner_instructions: None, replacement_blockhash: None }) }) })
+sadagat@sada:~/Desktop/SOLANA/DEFI$ 
+
+
+
+sadagat@sada:~/Desktop/SOLANA/DEFI$ spl-token burn DobGKUh4k5SmJcGK7qcmtm2y1KEHrwa9ckWPJzmcZwgj 100 --url devnet
+Burn 100 tokens
+  Source: DobGKUh4k5SmJcGK7qcmtm2y1KEHrwa9ckWPJzmcZwgj
+
+Signature: 1hY5zYo6jFzH7gJJ3JNFChVquEfW3yGPknJkXmgsVoRWLZc8GLNqvcF4bQY5GdAN7WArQdDCKsQ7enK8MZQLDeD
+
+
+
+sadagat@sada:~/Desktop/SOLANA/DEFI$ spl-token balance 13djdRCW2gmikgPkzUCDjytV5831Mwitc9zdB2EGBqX --url devnet
+900
+Diger hesab   basqa hesaba gondermek  o hesabin adresi walyuta adresi
+EWMqMoiL84M4r2seTHJRsis7S9csYjwJHoXaa6ddqDuW 
+
+
+
+sadagat@sada:~$ spl-token transfer 13djdRCW2gmikgPkzUCDjytV5831Mwitc9zdB2EGBqX 150 EWMqMoiL84M4r2seTHJRsis7S9csYjwJHoXaa6ddqDuW --url devnet
+Transfer 150 tokens
+  Sender: DobGKUh4k5SmJcGK7qcmtm2y1KEHrwa9ckWPJzmcZwgj
+  Recipient: EWMqMoiL84M4r2seTHJRsis7S9csYjwJHoXaa6ddqDuW
+  Recipient associated token account: 93Zucty3vHuQBYsiPYSJ3WLEcmS7UCSB1EXAASEsq8uz
+Error: "Error: Recipient's associated token account does not exist. Add `--fund-recipient` to fund their account"
+sadagat@sada:~$ spl-token transfer 13djdRCW2gmikgPkzUCDjytV5831Mwitc9zdB2EGBqX 150 EWMqMoiL84M4r2seTHJRsis7S9csYjwJHoXaa6ddqDuW --url devnet --fund-recipient
+Transfer 150 tokens
+  Sender: DobGKUh4k5SmJcGK7qcmtm2y1KEHrwa9ckWPJzmcZwgj
+  Recipient: EWMqMoiL84M4r2seTHJRsis7S9csYjwJHoXaa6ddqDuW
+  Recipient associated token account: 93Zucty3vHuQBYsiPYSJ3WLEcmS7UCSB1EXAASEsq8uz
+  Funding recipient: 93Zucty3vHuQBYsiPYSJ3WLEcmS7UCSB1EXAASEsq8uz
+
+Signature: ECx2GC1yNCCPrsh5oXz3Tb5zprFkM9B2be3FBBSWTDGNko6pd9VPPi4SFCmCZdyLYiyJYMp5PJKABa2rKUjm7Ww
