@@ -6,11 +6,19 @@ declare_id!("Foc5ecG5hHTeapmBvQn9GibQmRYLFTTMH6iZFF6XDuRV");
 pub mod mycalculatordapp {
     //use anchor_lang::solana_program::entrypoint::ProgramResult;
 
+    use anchor_lang::solana_program::entrypoint::ProgramResult;
+
     use super::*;
 
-    pub fn create(ctx: Context<Create>, init_message: String) -> Result<()> {
+    pub fn create(ctx: Context<Create>, init_message: String) ->ProgramResult {
         let calculator = &mut ctx.accounts.calculator;
         calculator.greeting = init_message;
+        Ok(())
+    }
+
+    pub fn add(ctx: Context<Addition>, num1: i64, num2: i64) -> ProgramResult {
+        let calculator = &mut ctx.accounts.calculator;
+        calculator.result = num1 +num2;
         Ok(())
     }
 }
@@ -28,6 +36,14 @@ pub struct Create<'info> {
     pub system_program: Program<'info, System>
 
 }
+
+#[derive(Accounts)]
+pub struct Addition<'info> {
+    #[account(mut)]
+    pub calculator: Account<'info, Calculator>
+}
+
+
 
 
 
