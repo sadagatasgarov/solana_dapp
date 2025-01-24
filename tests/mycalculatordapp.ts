@@ -62,13 +62,14 @@ describe('mycalculatorapp', () => {
 
 
   it('Division two numbers', async() => {
-    await program.rpc.divide(new anchor.BN(4), new anchor.BN(2), {
+    await program.rpc.divide(new anchor.BN(3), new anchor.BN(2), {
       accounts: {
         calculator: calculator.publicKey
       }
     })
 
     const account = await program.account.calculator.fetch(calculator.publicKey)
-    assert.ok(account.result.eq(new anchor.BN(2)))
+    assert.ok(account.result.eq(new anchor.BN(1)))
+    assert.ok(account.remainder.eq(new anchor.BN(1)))
   })
 })
